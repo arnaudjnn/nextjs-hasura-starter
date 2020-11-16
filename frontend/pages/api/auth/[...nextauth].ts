@@ -7,15 +7,36 @@ import IUser from "types/user";
 import iToken from "types/token";
 
 const jwtSecret = JSON.parse(process.env.AUTH_PRIVATE_KEY);
+const environment = process.env.NODE_ENV;
+const isProduction = environment === 'production';
+let database = {
+  type: process.env.NEXT_PUBLIC_DATABASE_TYPE,
+  host: process.env.NEXT_PUBLIC_DATABASE_HOST,
+  port: process.env.NEXT_PUBLIC_DATABASE_PORT,
+  username: process.env.NEXT_PUBLIC_DATABASE_USERNAME,
+  password: process.env.NEXT_PUBLIC_DATABASE_PASSWORD,
+  database: process.env.NEXT_PUBLIC_DATABASE_NAME,
+}
+if (!isProduction) {
+  database = {
+    ...database,
+    ssl: true,
+    extra: {
+      ssl: {
+        rejectUnauthorized: false
+      },
+    }
+  }
+}
 
 const options = {
   providers: [
-    Providers.Google({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    Providers.Facebook({
+      clientId: process.env.FACEBOOK_CLIENT_ID,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     }),
   ],
-  database: process.env.NEXT_PUBLIC_DATABASE_URL,
+  database,
   session: {
     jwt: true,
   },
