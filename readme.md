@@ -47,7 +47,7 @@ AUTH_PRIVATE_KEY='{"type":"RS256", "key": "-----BEGIN RSA PRIVATE KEY-----\nMIIE
 
 ### 7. **Create and copy the Facebook client credentials**
 
-Create a new [Google OAuth Client](https://developers.facebook.com/apps/) and copy the credentials (Client ID and Client Secret) in your .env file.
+Create a new [Facebook OAuth Client](https://developers.facebook.com/apps/) and copy the credentials (Client ID and Client Secret) in your .env file.
 
 ### 8. **Start the frontend application**
 
@@ -59,13 +59,7 @@ yarn dev
 
 The above command will start the frontend application on [http://localhost:3000/](http://localhost:3000).
 
-### 9. **Go inside the directory of the backend package on another terminal window**
-
-```sh
-cd packages/backend
-```
-
-### 10. **Add JWT_SECRET to your hasura cloud**
+### 9. **Add JWT_SECRET to your hasura cloud**
 
 ```sh
 awk -v ORS='\\n' '1' public.pem
@@ -74,7 +68,7 @@ awk -v ORS='\\n' '1' public.pem
 Go to your Hasura cloud project and add New Env Var :
 ![Add JWT_SECRET](https://i.postimg.cc/d3fJKrkH/jwt-secret.jpg)
 
-### 11. **Add ADMIN_SECRET to your hasura cloud**
+### 10. **Add ADMIN_SECRET to your hasura cloud**
 
 ![Add JWT_SECRET](https://i.postimg.cc/J4K2tMp8/admin-secret.jpg)
 
