@@ -1,26 +1,47 @@
 {
+  "name": "nextjs-hasura-boilerplate-frontend",
+  "version": "0.0.1",
+  "author": "nirmalya.email@gmail.com",
+  "license": "MIT",
   "scripts": {
-    "dev:frontend": "cd frontend && yarn dev",
-    "build:frontend": "cd frontend && yarn build",
-    "export:frontend": "cd frontend && yarn export",
-    "start:frontend": "cd frontend && yarn start",
-    "release": "release-it"
+    "dev": "next dev",
+    "build:analyze": "ANALYZE=true next build && tsc --project tsconfig.server.json",
+    "build": "next build",
+    "export": "next export",
+    "start": "next start",
+    "type-check": "tsc"
+  },
+  "dependencies": {
+    "@chakra-ui/core": "^0.8.0",
+    "@emotion/core": "^10.1.1",
+    "@emotion/styled": "^10.0.27",
+    "dayjs": "^1.9.6",
+    "emotion-theming": "^10.0.27",
+    "graphql": "^15.4.0",
+    "graphql-tag": "^2.11.0",
+    "isomorphic-unfetch": "^3.1.0",
+    "isomorphic-ws": "^4.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "next": "^10.0.1",
+    "next-auth": "^3.1.0",
+    "next-urql": "^2.1.1",
+    "pg": "^8.5.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-is": "^17.0.1",
+    "subscriptions-transport-ws": "^0.9.18",
+    "urql": "^1.11.2",
+    "ws": "^7.4.0"
   },
   "devDependencies": {
-    "@release-it/conventional-changelog": "^2.0.0",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
-    "prettier": "^2.1.2",
-    "release-it": "^14.2.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,json,css,md,tsx,ts}": [
-      "prettier --write"
-    ]
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/next": "^9.0.0",
+    "@types/node": "^14.14.7",
+    "@types/pg": "^7.14.6",
+    "@types/react": "^16.9.56",
+    "@types/react-dom": "^16.9.9",
+    "tslint": "^6.1.3",
+    "tslint-react": "^5.0.0",
+    "typescript": "^4.0.5"
   }
 }
