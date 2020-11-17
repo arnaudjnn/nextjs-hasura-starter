@@ -95,10 +95,10 @@ CREATE UNIQUE INDEX token
 git clone https://github.com/brotherbarz/next-auth-hasura-cloud-starterkit.git
 ```
 
-### 2. **Install necessary dependencies for the frontend application**
+### 2. **Install necessary dependencies for the application**
 
 ```sh
-cd frontend && yarn install
+yarn install
 ```
 
 ### 3. **Create a .env file and copy the contents from .env.example (present in frontend directory)**
