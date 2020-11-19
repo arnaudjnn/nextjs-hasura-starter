@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState } from "react";
 import gql from "graphql-tag";
 import { useMutation } from "urql";
 import {
@@ -82,9 +82,7 @@ const AddNewFeedForm = () => {
             <Textarea
               id="body"
               value={body}
-              onChange={(e: FormEvent<HTMLInputElement>) =>
-                setBody(e.currentTarget.value)
-              }
+              onChange={(e) => setBody(e.currentTarget.value)}
               isDisabled={insertFeedFetching}
             />
           </FormControl>

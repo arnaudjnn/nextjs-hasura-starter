@@ -19,8 +19,6 @@ const Navbar: NextComponentType = () => {
   const color = { light: "gray.800", dark: "gray.100" };
 
   const handleToggleTheme = () => {
-    console.log("hello");
-
     toggleColorMode();
   };
 
