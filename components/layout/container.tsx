@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Box, useColorMode } from "@chakra-ui/core";
+import { Box, useColorMode } from "@chakra-ui/react";
 
 const Container: FC = ({ children }) => {
   const { colorMode } = useColorMode();

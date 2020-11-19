@@ -9,7 +9,8 @@ import {
   Button,
   IconButton,
   useColorMode,
-} from "@chakra-ui/core";
+} from "@chakra-ui/react";
+import { FiSun, FiMoon } from "react-icons/fi"
 
 const Navbar: NextComponentType = () => {
   const [session] = useSession();
@@ -38,9 +39,9 @@ const Navbar: NextComponentType = () => {
       href: "/feeds",
     },
     {
-      id: "myAccount",
-      label: "My Account",
-      href: "/my-account",
+      id: "account",
+      label: "Account",
+      href: "/account",
     },
   ];
 
@@ -91,7 +92,7 @@ const Navbar: NextComponentType = () => {
       <IconButton
         aria-label="Toggle theme"
         fontSize="20px"
-        icon={colorMode === "dark" ? "sun" : "moon"}
+        icon={colorMode === "dark" ? <FiSun /> : <FiMoon />}
         onClick={handleToggleTheme}
       />
     );

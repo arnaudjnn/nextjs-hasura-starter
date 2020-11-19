@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import Page from "components/pages/my-account";
+import Page from "components/pages/account";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import AccessDeniedIndicator from "components/access-denied-indicator";
 import { getSession } from "next-auth/client";

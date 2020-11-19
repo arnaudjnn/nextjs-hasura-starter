@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Icon, Flex, Button, Stack, Box } from "@chakra-ui/core";
+import { Icon, Flex, Button, Stack, Box } from "@chakra-ui/react";
 import Link from "next/link";
 import { signIn } from "next-auth/client";
 

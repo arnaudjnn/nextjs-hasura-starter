@@ -15,7 +15,7 @@ import {
   AlertIcon,
   AlertTitle,
   CloseButton,
-} from "@chakra-ui/core";
+} from "@chakra-ui/react";
 import Loader from "components/loader";
 import { useSession } from "next-auth/client";
 
