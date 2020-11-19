@@ -1,7 +1,7 @@
 **/.DS_STORE
 node_modules
 .next
-**/.env
+**/.env.local
 out
 **/*.pem
 .vercel
