@@ -11,56 +11,66 @@
 ### 2. **Run Scheme bellow on your hasura console**
 
 ```sh
-CREATE TABLE accounts
-  (
-    id                   SERIAL,
-    compound_id          VARCHAR(255) NOT NULL,
-    user_id              INTEGER NOT NULL,
-    provider_type        VARCHAR(255) NOT NULL,
-    provider_id          VARCHAR(255) NOT NULL,
-    provider_account_id  VARCHAR(255) NOT NULL,
-    refresh_token        TEXT,
-    access_token         TEXT,
-    access_token_expires TIMESTAMPTZ,
-    created_at           TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at           TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id)
-  );
+CREATE TABLE accounts (
+	id uuid NOT NULL DEFAULT gen_random_uuid(),
+	compound_id varchar NOT NULL,
+	user_id uuid NOT NULL,
+	provider_type varchar NOT NULL,
+	provider_id varchar NOT NULL,
+	provider_account_id varchar NOT NULL,
+	refresh_token text NULL,
+	access_token text NULL,
+	access_token_expires timestamptz NULL,
+	created_at timestamptz NOT NULL DEFAULT now(),
+	updated_at timestamptz NOT NULL DEFAULT now(),
+	CONSTRAINT accounts_pkey PRIMARY KEY (id)
+);
 
-CREATE TABLE sessions
-  (
-    id            SERIAL,
-    user_id       INTEGER NOT NULL,
-    expires       TIMESTAMPTZ NOT NULL,
-    session_token VARCHAR(255) NOT NULL,
-    access_token  VARCHAR(255) NOT NULL,
-    created_at    TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at    TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id)
-  );
 
-CREATE TABLE users
-  (
-    id             SERIAL,
-    name           VARCHAR(255),
-    email          VARCHAR(255),
-    email_verified TIMESTAMPTZ,
-    image          VARCHAR(255),
-    created_at     TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at     TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id)
-  );
+CREATE TABLE feeds (
+	id uuid NOT NULL DEFAULT gen_random_uuid(),
+	author_id uuid NOT NULL,
+	body text NOT NULL,
+	created_at timestamptz NOT NULL DEFAULT now(),
+	updated_at timestamptz NOT NULL DEFAULT now(),
+	CONSTRAINT feeds_pkey PRIMARY KEY (id)
+);
 
-CREATE TABLE verification_requests
-  (
-    id         SERIAL,
-    identifier VARCHAR(255) NOT NULL,
-    token      VARCHAR(255) NOT NULL,
-    expires    TIMESTAMPTZ NOT NULL,
-    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id)
-  );
+
+CREATE TABLE sessions (
+	id uuid NOT NULL DEFAULT gen_random_uuid(),
+	user_id int4 NOT NULL,
+	expires timestamptz NOT NULL,
+	session_token varchar NOT NULL,
+	access_token varchar NOT NULL,
+	created_at timestamptz NOT NULL DEFAULT now(),
+	updated_at timestamptz NOT NULL DEFAULT now(),
+	CONSTRAINT sessions_pkey PRIMARY KEY (id)
+);
+
+
+CREATE TABLE users (
+	id uuid NOT NULL DEFAULT gen_random_uuid(),
+	"name" varchar NULL,
+	email varchar NOT NULL,
+	email_verified timestamptz NULL,
+	image varchar NULL,
+	created_at timestamptz NOT NULL DEFAULT now(),
+	updated_at timestamptz NOT NULL DEFAULT now(),
+	CONSTRAINT users_pkey PRIMARY KEY (id)
+);
+
+
+CREATE TABLE verification_requests (
+	id uuid NOT NULL DEFAULT gen_random_uuid(),
+	identifier varchar NOT NULL,
+	"token" varchar NOT NULL,
+	expires timestamptz NOT NULL,
+	created_at timestamptz NOT NULL DEFAULT now(),
+	updated_at timestamptz NOT NULL DEFAULT now(),
+	CONSTRAINT verification_requests_pkey PRIMARY KEY (id)
+);
+
 
 CREATE UNIQUE INDEX compound_id
   ON accounts(compound_id);
