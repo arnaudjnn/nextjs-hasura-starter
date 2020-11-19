@@ -74,8 +74,8 @@ const options = {
         picture: token.picture,
         "https://hasura.io/jwt/claims": {
           "x-hasura-allowed-roles": ["admin", "user"],
-          "x-hasura-default-role": "user",
-          "x-hasura-role": "user",
+          "x-hasura-default-role": "admin",
+          "x-hasura-role": "admin",
           "x-hasura-user-id": token.id,
         },
         iat: Date.now() / 1000,
